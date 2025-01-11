@@ -49,7 +49,8 @@ exports.register = async (req, res) => {
     }
 
     // send verification token/link in email
-    const URL = `http://localhost:5000/api/verifyEmail/${token.token}`
+    // const URL = `http://localhost:5000/api/verifyEmail/${token.token}`
+    const URL = `http://localhost:5173/verifyEmail/${token.token}`
     emailSender({
         from: 'noreply@something.com',
         to: email,
@@ -146,6 +147,7 @@ exports.resetPassword = async (req, res) => {
 // login
 exports.signin = async (req, res) => {
     // get email and password from user
+    console.log(req.body)
     let { email, password } = req.body
     // check if email is registered
     let user = await UserModel.findOne({ email })
